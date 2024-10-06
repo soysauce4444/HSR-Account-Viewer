@@ -1,0 +1,13 @@
+extends common/layout 
+
+block layout-content 
+  h1.text-center Lightcones
+  .container.p-4
+    .row.gy-4   
+      each lightcone in lightcones 
+        .col-12.col-sm-6.col-md-4.d-flex
+          .card.p-3.flex-fill
+            img(src=lightcone.cardImage, alt=`Image of ${lightcone.name}`)
+            h4.text-center #{lightcone.name}
+            p !{lightcone.description} 
+            //- !{variable} syntax

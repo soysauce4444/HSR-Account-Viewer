@@ -1,0 +1,51 @@
+extends common/layout 
+
+block layout-content 
+  if userDashboard 
+    .container
+      h2 Welcome, #{userDashboard.player.nickname}!
+      img(src=userDashboard.player.avatar.icon alt='avatar')
+      p.mb-1 "#{userDashboard.player.signature}"
+      p.mb-1 Your stats:
+      ul.list-unstyled
+        li Level: #{userDashboard.player.level}
+        li World Level: #{userDashboard.player.world_level}
+        li Friend Count: #{userDashboard.player.friend_count}
+        li Number of Characters: #{userDashboard.player.space_info.avatar_count}
+        li Number of Light Cones: #{userDashboard.player.space_info.light_cone_count}
+        li Number of Achievements: #{userDashboard.player.space_info.achievement_count}
+    h2.text-center Your favorite characters are: 
+    .container.p-4
+      .row.gy-4 
+        each character in userDashboard.characters
+          .col-12.col-sm-6.col-md-4.d-flex
+            .card.p-3.flex-fill
+              img(src=character.preview alt="character preview")
+              p.mb-1 #{character.name} 
+              .d-flex 
+                img(src=character.path alt="character path" class="img-fluid" style="width: 50px; height: 50px; background-color: #D2A5B9") 
+                img(src=character.element alt="character element" class="img-fluid" style="width: 50px; height: 50px")
+              p.mb-1 Rarity: #{character.rarity}
+              p.mb-1 Eidolon: #{character.rank}
+              p.mb-1 Level: #{character.level}
+              p.mb-1 #{character.path.name}
+              p.mb-1 #{character.element.name} 
+              h5 Equipped Light Cone:
+              img(src=character.light_cone.preview alt="character light cone")
+              p.mb-1 #{character.light_cone.name} 
+              p.mb-1 Rarity: #{character.light_cone.rarity}
+              p.mb-1 Level: #{character.light_cone.level}
+              p.mb-1 Superimposition: #{character.light_cone.rank}
+  else
+    h2.text-center Enter your UID to get started!
+    .d-flex.justify-content-center.align-items-center
+      form(method="post", action="/")
+        .d-flex.p-2
+          div 
+            label(for="uid") UID: 
+            input(type="number", id="uid", name="uid", value="800333171")
+          button(type="submit", value="enter-uid") Show my Account!
+  //- future feature: add option to add new uid to see another account
+
+
+  

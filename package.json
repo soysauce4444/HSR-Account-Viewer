@@ -1,0 +1,19 @@
+{
+  "name": "jassignment-2-younginchoi",
+  "version": "1.0.0",
+  "description": "assignment 2 for http 5222",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "pug": "^3.0.3",
+    "starrail.js": "^1.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

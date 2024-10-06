@@ -1,0 +1,14 @@
+extends common/layout 
+
+block layout-content 
+  h1.text-center Characters
+  .container.p-4
+    .row.gy-4 
+      each character in characters 
+        .col-12.col-sm-6.col-md-4.d-flex
+          .card.p-3.flex-fill
+            img(src=character.splashImage, alt=`Image of ${character.name}`)
+            h4.text-center #{character.name}
+            p !{character.description} 
+            //- !{variable} syntax
+        
